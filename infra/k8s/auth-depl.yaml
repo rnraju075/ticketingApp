@@ -15,6 +15,7 @@ spec:
       containers: 
         - name: auth
           image: rnraju075/auth
+          # imagePullPolicy: IfNotPresent
 
 ---
 apiVersion: v1
