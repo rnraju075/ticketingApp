@@ -5,4 +5,5 @@ export interface AuthController {
   signin: (req: Request, res: Response, next: NextFunction) => Promise<void>;
   signout: (req: Request, res: Response, next: NextFunction) => Promise<void>;
   currentuser: (req: Request, res: Response, next: NextFunction) => Promise<void>;
+  getAllUsers: (req: Request, res: Response, next: NextFunction) => Promise<void>;
 }

@@ -1,5 +1,5 @@
 import { body, validationResult } from "express-validator";
-import { RequestValidationError } from "../errors/request-validation-errors.js";
+import { RequestValidationError } from "../errors/request-validation-errors";
 import { NextFunction,Request,Response } from "express";
 
 export const authMiddleware = [
@@ -21,7 +21,7 @@ export const authMiddleware = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      console.log("validation errors", errors.array());
+      // console.log("validation errors", errors.array());
 
       // ✅ THIS IS THE MISSING LINE
       return next(new RequestValidationError(errors.array()));

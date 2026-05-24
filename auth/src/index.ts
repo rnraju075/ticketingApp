@@ -1,15 +1,21 @@
-import express from 'express';
-import { authRouter } from './routes/auth.routes.js';
-import { errorHandler } from './middleware/error-handler.middleware.js';
+import mongoose from "mongoose";
+import { app } from "./app.js";
+import dotenv from "dotenv";
+dotenv.config();
 
-const app = express();
-app.use(express.json());
+const start = async () => {
+  if (!process.env.JWT_KEY) {
+    throw new Error("JWT_KEY must be defined");
+  }
+  try {
+    await mongoose.connect("mongodb://auth-mongo-svc:27017/auth");
+    console.log("connected to mongodb");
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-app.use("/api/auth", authRouter);
-
-// ✅ MUST BE LAST
-app.use(errorHandler);
-
-app.listen(3000, () => {
+app.listen(3000, async () => {
+  await start();
   console.log("server running on port 3000");
 });

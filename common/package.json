@@ -1,0 +1,22 @@
+{
+"name": "@sgticketspvt/common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist/**/*"
+  ],
+  "scripts": {
+    "delete": "del-cli dist",
+    "build": "npm run delete && tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "del-cli": "^7.0.0",
+    "typescript": "^6.0.3"
+  }
+}
