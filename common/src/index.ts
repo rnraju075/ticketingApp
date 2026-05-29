@@ -8,3 +8,4 @@ export * from "./middleware/current-user";
 export * from "./middleware/error-handler.middleware";
 export * from "./middleware/requireAuth";
 export * from "./middleware/auth.middleware";
+export * from "./middleware/validate-request";
