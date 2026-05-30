@@ -1,8 +1,8 @@
 import express from "express";
-import { authRouter } from "./routes/auth.routes";
-import { errorHandler } from "@sgticketspvt/common";
-import { NotFoundError } from "@sgticketspvt/common";
+import { errorHandler,NotFoundError, currentUser } from "@sgticketspvt/common";
+
 import cookieSession from "cookie-session";
+import { ticketRouter } from "./routes/ticket.route";
 
 const app = express();
 app.set("trust proxy", true); // trust first proxy
@@ -13,7 +13,8 @@ app.use(
     secure: process.env.NODE_ENV !== "test", // set to true in production with HTTPS
   }),
 );
-app.use("/api/auth", authRouter);
+app.use(currentUser);
+app.use("/api/ticket", ticketRouter);
 
 // no page found
 app.use((req, res) => {

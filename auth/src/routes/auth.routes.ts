@@ -1,9 +1,9 @@
 import express from 'express';
+import { authMiddleware } from '@sgticketspvt/common';
+import { errorHandler } from '@sgticketspvt/common';
+import { currentUser } from "@sgticketspvt/common";
+import { requireAuth } from '@sgticketspvt/common';
 import { authController } from '../controller/auth.controller';
-import { authMiddleware } from '../middleware/auth.middleware';
-import { errorHandler } from '../middleware/error-handler.middleware';
-import { currentUser } from "../middleware/current-user";
-import { requireAuth } from '../middleware/requireAuth';
 
 
 const authRouter = express.Router();

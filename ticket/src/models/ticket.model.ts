@@ -1,0 +1,43 @@
+import mongoose from "mongoose";
+
+interface TicketAttrs {
+  title: string;
+  price: number;
+  userId: string;
+}
+
+interface TicketDoc extends mongoose.Document {
+    title: string;
+    price: number;
+    userId: string;
+}
+
+interface TicketModel extends mongoose.Model<TicketDoc> {
+    build(attrs: TicketAttrs): TicketDoc;
+}
+
+export const ticketSchema = new mongoose.Schema(
+  {
+    title: {
+        type: String,
+        required: true,
+    },
+    price: {    
+        type: Number,
+        required: true,
+        min: 0,
+    },
+    userId: {
+        type: String,
+        required: true,
+    },
+  },
+  {
+    toJSON: {
+      transform(doc, ret) {
+        ret.id = ret._id;
+        delete ret._id;
+      }
+    },
+  }
+);

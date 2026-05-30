@@ -1,5 +1,5 @@
 import Jwt from "jsonwebtoken";
-import { BadRequestError } from "../errors/bad-request-error";
+import { BadRequestError } from "@sgticketspvt/common";
 import { AuthController } from "../interface/auth.interface";
 import { User } from "../models/user";
 
